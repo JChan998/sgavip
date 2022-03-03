@@ -171,17 +171,17 @@ install_soga() {
     # 设置节点序号
     echo "Đặt số nút"
     echo ""
-    read -p "Vui lòng nhập node ID: " node_id
-    [ -z "${node_id}" ]
+    read -p "Vui lòng nhập node ID: " node_i_d
+    [ -z "${node_i_d}" ]
     echo "---------------------------"
-    echo "Node ID của bạn đặt là: ${node_id}"
+    echo "Node ID của bạn đặt là: ${node_i_d}"
     echo "---------------------------"
     echo ""
 
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
-    sed -i "s/node_id:.*/node_id= ${node_id}/g" /etc/soga/soga.conf
+    sed -i "s/node_id:.*/node_id= ${node_i_d}/g" /etc/soga/soga.conf
     echo ""
     echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
     echo
