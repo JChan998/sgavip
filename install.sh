@@ -181,7 +181,7 @@ install_soga() {
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
-    sed -i "s/node_id:.*/node_id: ${node_id}/g" /etc/soga/soga.conf
+    sed -i "s/node_id=.*/node_id= ${node_id}/g" /etc/soga/soga.conf
     echo ""
     echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
     echo
