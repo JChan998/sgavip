@@ -167,6 +167,16 @@ install_soga() {
     fi
     curl -o /usr/bin/soga -Ls https://raw.githubusercontent.com/vaxilu/soga/master/soga.sh
     chmod +x /usr/bin/soga
+    
+    # 设置节点序号
+    echo "Đặt số nút"
+    echo ""
+    read -p "Vui lòng nhập node ID: " node_id
+    [ -z "${node_id}" ]
+    echo "---------------------------"
+    echo "Node ID của bạn đặt là: ${node_id}"
+    echo "---------------------------"
+    echo ""
 
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
