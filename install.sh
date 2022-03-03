@@ -168,32 +168,20 @@ install_soga() {
     curl -o /usr/bin/soga -Ls https://raw.githubusercontent.com/vaxilu/soga/master/soga.sh
     chmod +x /usr/bin/soga
     
-    # 设置节点序号
-    echo "Đặt số nút"
-    echo ""
-    read -p "Vui lòng nhập node ID: " node_i_d
-    [ -z "${node_i_d}" ]
-    echo "---------------------------"
-    echo "Node ID của bạn đặt là: ${node_i_d}"
-    echo "---------------------------"
-    echo ""
-
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
-    sed -i "s/node_id:.*/node_id= ${node_i_d}/g" /etc/soga/soga.conf
-    echo ""
     echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
     echo
-
+    
     systemctl daemon-reload
-    soga restart
+    
     echo "Đang tắt tường lửa!"
     echo
     systemctl disable firewalld
     systemctl stop firewalld
-    echo "Dịch vụ XrayR đã được khởi động lại, hãy dùng thử!"
-    echo    
+    echo "Dịch vụ soga đã được khởi động lại, hãy dùng thử!"
+    echo
 
     curl -o /usr/bin/soga-tool -Ls https://raw.githubusercontent.com/vaxilu/soga/master/soga-tool-${arch}
     chmod +x /usr/bin/soga-tool
