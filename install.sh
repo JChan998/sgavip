@@ -7,6 +7,12 @@ plain='\033[0m'
 
 cur_dir=$(pwd)
 
+# config soga 
+  echo "Soga MadeBy Pntuanhai"
+  echo "Đây là tập lệnh Config Soga"
+  read -r -p "Vui lòng điền node ID: " pIds
+  read -r -p "Limit số thiết bị: " nLimit
+  
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${red}Lỗi：${plain} Chạy tập lệnh dưới quyền Root！\n" && exit 1
 
@@ -171,6 +177,7 @@ install_soga() {
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
+    sed -i "s/node_id=.*/node_id= ${pIds}/g" /etc/soga/soga.conf
     echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
     echo
     
@@ -210,3 +217,4 @@ echo -e "${green}开始安装${plain}"
 install_base
 install_acme
 install_soga $1
+soga start
