@@ -11,7 +11,7 @@ cur_dir=$(pwd)
   echo "Soga MadeBy Pntuanhai"
   echo "Đây là tập lệnh Config Soga"
   read -r -p "Vui lòng điền node ID: " pIds
-  read -r -p "Limit số thiết bị: " nLimit
+  read -r -p "Limit số thiết bị: " pLimit
   
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${red}Lỗi：${plain} Chạy tập lệnh dưới quyền Root！\n" && exit 1
@@ -178,8 +178,8 @@ install_soga() {
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
     sed -i "s/node_id=.*/node_id=${pIds}/g" /etc/soga/soga.conf
-    sed -i "s/user_conn_limit=.*/user_conn_limit=${nLimit}/g" /etc/soga/soga.conf
-    echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
+    sed -i "s/user_conn_limit=.*/user_conn_limit=${pLimit}/g" /etc/soga/soga.conf
+    echo "Đã hoàn tất, đang khởi chạy dịch vụ soga ..."
     echo
     
     systemctl daemon-reload
