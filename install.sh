@@ -177,8 +177,8 @@ install_soga() {
      # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
     wget https://raw.githubusercontent.com/JChan998/sgavip/main/soga.conf -O /etc/soga/soga.conf
-    sed -i "s/node_id=.*/node_id= ${pIds}/g" /etc/soga/soga.conf
-    sed -i "s/user_conn_limit=.*/user_conn_limit= ${pLimit}/g" /etc/soga/soga.conf
+    sed -i "s/node_id=.*/node_id=${pIds}/g" /etc/soga/soga.conf
+    sed -i "s/user_conn_limit=.*/user_conn_limit=${nLimit}/g" /etc/soga/soga.conf
     echo "Đã hoàn tất, đang cố khởi động lại dịch vụ soga ..."
     echo
     
